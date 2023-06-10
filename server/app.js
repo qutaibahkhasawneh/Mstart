@@ -97,7 +97,7 @@ try {
       connection.query("USE mstart");
       connection.query(
         `INSERT INTO users (Server_DateTime , DateTime_UTC , Update_DateTime_UTC ,Last_Login_DateTime_UTC ,Name , Email , Phone , Status , Gender , Date_Of_Birth)
-         VALUES (CURRENT_TIMESTAMP , CURRENT_TIMESTAMP , null , null , '${signupData.name}' , '${signupData.email}' , '${signupData.phone}' , '${signupData.status}' , '${signupData.gender}' , '${signupData.date_of_birth}')`,
+         VALUES (CURRENT_TIMESTAMP , CURRENT_TIMESTAMP , null , null , '${signupData.name}' , '${signupData.email}' , '${signupData.phone}' , '${signupData.status}' , '${signupData.gender}' , '${signupData.dateOfBirth}')`,
         function (err, results, fields) {
           console.log(err);
           console.log(results); // results contains rows returned by server
