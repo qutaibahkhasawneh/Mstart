@@ -1,10 +1,12 @@
 const express = require("express");
 const mysql = require("mysql2");
 const multer = require('multer');
+const cors  = require('cors');
 
 const app = express();
 const upload = multer({ dest: 'uploads/' });
 const PORT = 3000;
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
@@ -23,8 +25,8 @@ try {
     console.log("body data are : ", data);
     connection.query("USE mstart");
     connection.query(
-      `INSERT INTO users (Server_DateTime , DateTime_UTC , Update_DateTime_UTC ,Last_Login_DateTime_UTC ,Name , Email , Phone , Status , Gender , Date_Of_Birth)
-       VALUES (CURRENT_TIMESTAMP , CURRENT_TIMESTAMP , null , null , '${data.name}' , '${data.email}' , '${data.phone}' , '${data.status}' , '${data.gender}' , '${data.date_of_birth}')`,
+      `INSERT INTO users (Server_DateTime , DateTime_UTC , Update_DateTime_UTC ,Last_Login_DateTime_UTC ,Name , Email , Password , Phone , Status , Gender , Date_Of_Birth)
+       VALUES (CURRENT_TIMESTAMP , CURRENT_TIMESTAMP , null , null , '${data.name}' , '${data.email}' , '${data.password}', '${data.phone}' , '${data.status}' , '${data.gender}' , '${data.date_of_birth}')`,
       function (err, results, fields) {
         console.log(err);
         console.log(results); // results contains rows returned by server
@@ -96,8 +98,8 @@ try {
       console.log("body data are : ", signupData);
       connection.query("USE mstart");
       connection.query(
-        `INSERT INTO users (Server_DateTime , DateTime_UTC , Update_DateTime_UTC ,Last_Login_DateTime_UTC ,Name , Email , Phone , Status , Gender , Date_Of_Birth)
-         VALUES (CURRENT_TIMESTAMP , CURRENT_TIMESTAMP , null , null , '${signupData.name}' , '${signupData.email}' , '${signupData.phone}' , '${signupData.status}' , '${signupData.gender}' , '${signupData.dateOfBirth}')`,
+        `INSERT INTO users (Server_DateTime , DateTime_UTC , Update_DateTime_UTC ,Last_Login_DateTime_UTC ,Name , Email , Password ,Phone , Status , Gender , Date_Of_Birth)
+         VALUES (CURRENT_TIMESTAMP , CURRENT_TIMESTAMP , null , null , '${signupData.name}' , '${signupData.email}' , '${signupData.password}', '${signupData.phone}', , '${signupData.status}' , '${signupData.gender}' , '${signupData.dateOfBirth}')`,
         function (err, results, fields) {
           console.log(err);
           console.log(results); // results contains rows returned by server
@@ -158,9 +160,6 @@ app.get("/users", (req, res) => {
     console.log(fields); // fields contains extra meta data about results, if available
     res.status(200).json(results);
   });
-
- 
-  
 });
 
   // Route to delete users 

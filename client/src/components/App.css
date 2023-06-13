@@ -1,3 +1,5 @@
+
+
 .card-registration .select-input.form-control[readonly]:not([disabled]) {
     font-size: 1rem;
     line-height: 2.15;
@@ -22,4 +24,34 @@
     }
     .text-muted {
         color: #5d0404!important;
+    }
+    .home-stats .stat{
+        background-color: #EEE;
+        border: 1px solid #CCC;
+        padding: 30px;
+        font-size: 20px;
+    }
+    .home-stats .stat span{
+        display: block  ;
+        font-size: 20px;
+    }
+    
+    .home-stats {
+        margin-top: 150px;
+    }
+    
+    
+    .dash {
+        font-size: 55ps;
+        margin: 40px 0  !important;
+        color: #666;
+        font-weight: bold;
+    }
+    .stat{
+        font-size: 25px !important; 
+        font-weight: bold !important;
+    }
+    .decoration{
+        color: #6d6c6c !important;
+        
     }
